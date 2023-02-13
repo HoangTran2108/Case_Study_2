@@ -1,47 +1,56 @@
 package model;
 
 public class Employee extends Person implements CalculateTheAmount {
+    private double hardSalary;
     private double bonus;
     private double fine;
 
     public Employee() {
     }
 
-    public Employee(double bonus, double fine) {
+    public Employee(String id, String name, int age, String phoneNumber, double hardSalary, double bonus, double fine) {
+        super(id, name, age, phoneNumber);
+        this.hardSalary = hardSalary;
         this.bonus = bonus;
         this.fine = fine;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "bonus=" + bonus +
-                ", fine=" + fine +
-                '}';
+    public double getHardSalary() {
+        return hardSalary;
     }
 
-    @Override
-    public String id() {
-        return null;
+    public void setHardSalary(double hardSalary) {
+        this.hardSalary = hardSalary;
     }
 
-    @Override
-    public String name() {
-        return null;
+    public double getBonus() {
+        return bonus;
     }
 
-    @Override
-    public int age() {
-        return 0;
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
     }
 
-    @Override
-    public String phoneNumber() {
-        return null;
+    public double getFine() {
+        return fine;
     }
 
+    public void setFine(double fine) {
+        this.fine = fine;
+    }
     @Override
     public double totalmoney() {
-        return 0;
+        return hardSalary + bonus - fine;
     }
+
+    @Override
+    public String toString() {
+        return "Nhân viên: " + "id" + getId() +
+                "Tên: " + getName() +
+                ", tuổi: " + getAge() +
+                ", số điện thoại: " + getPhoneNumber() +
+                ", tiền thưởng: " + bonus +
+                ", tiền phạt" + fine + "\n";
+    }
+
 }
